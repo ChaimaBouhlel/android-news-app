@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.project.newsapp.models.Article
 import com.project.newsapp.models.NewsResponse
 import com.project.newsapp.repository.NewsRepository
 import com.project.newsapp.util.Resource
@@ -16,9 +15,12 @@ class NewsViewModel(
 ): ViewModel() {
     val breakingNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var breakingNewsPage = 1
+    var breakingNewsResponse : NewsResponse? = null
 
     val searchNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var searchNewsPage = 1
+    var searchNewsResponse : NewsResponse? = null
+
     private val TAG = "YourViewModelClass"
 
     init {
@@ -40,7 +42,17 @@ class NewsViewModel(
         if(response.isSuccessful){
 
             response.body()?.let{
-                 resultResponse -> return Resource.Success(resultResponse)
+                 resultResponse ->
+                breakingNewsPage++
+                if(breakingNewsResponse == null) {
+                    breakingNewsResponse = resultResponse
+                } else {
+                var oldArticles = breakingNewsResponse?.articles
+                var newArticles = resultResponse?.articles
+                    oldArticles?.addAll(newArticles)
+                }
+
+                return Resource.Success(breakingNewsResponse ?: resultResponse)
 
             }
         }
@@ -49,23 +61,22 @@ class NewsViewModel(
 
     private fun handleSearchNewsResponse(response: Response<NewsResponse>) : Resource<NewsResponse>{
         if(response.isSuccessful){
-            Log.d(TAG, "successful search $response")
+
             response.body()?.let{
-                    resultResponse -> return Resource.Success(resultResponse)
+                    resultResponse ->
+                searchNewsPage++
+                if(searchNewsResponse == null) {
+                    searchNewsResponse = resultResponse
+                } else {
+                    var oldArticles = searchNewsResponse?.articles
+                    var newArticles = resultResponse?.articles
+                    oldArticles?.addAll(newArticles)
+                }
+
+                return Resource.Success(searchNewsResponse ?: resultResponse)
 
             }
         }
         return Resource.Error(response.message())
     }
-
-    fun saveArticle(article: Article) = viewModelScope.launch {
-        newsRepository.upsert(article)
-
     }
-
-    fun getSavedNews() = newsRepository.getSavedNews()
-    fun deleteArticle(article: Article) = viewModelScope.launch{
-        newsRepository.deleteArticle(article)
-
-    }
-}

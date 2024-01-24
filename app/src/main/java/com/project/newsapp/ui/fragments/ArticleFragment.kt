@@ -4,12 +4,10 @@ import android.os.Bundle
 import android.view.View
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
-import com.google.android.material.snackbar.Snackbar
 import com.project.newsapp.R
 import com.project.newsapp.models.Article
 import com.project.newsapp.ui.NewsActivity
 import com.project.newsapp.ui.NewsViewModel
-import kotlinx.android.synthetic.main.fragment_article.fab
 import kotlinx.android.synthetic.main.fragment_article.webView
 
 class ArticleFragment : Fragment(R.layout.fragment_article){
@@ -17,17 +15,12 @@ class ArticleFragment : Fragment(R.layout.fragment_article){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as NewsActivity).newsViewModel
-        val article = arguments?.getSerializable("article") as Article
+        val article = arguments?.getSerializable("article") as Article?
         webView.apply {
             webViewClient = WebViewClient()
             if (article != null) {
                 loadUrl(article.url)
             }
-        }
-        fab.setOnClickListener{
-            viewModel.saveArticle(article)
-            Snackbar.make(view,"Article saved successfully ", Snackbar.LENGTH_SHORT).show()
-
         }
     }
 }
