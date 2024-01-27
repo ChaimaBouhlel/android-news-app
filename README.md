@@ -91,6 +91,10 @@ LiveData and ViewModel: LiveData ensures that UI components are always up-to-dat
 Resource Class: The Resource class simplifies handling different states of a network request, making UI logic cleaner.
 Repository Pattern: Centralized data access through the repository, promoting a clean architecture.
 
+### Internet Exception 
+![image](https://github.com/ChaimaBouhlel/android-news-app/assets/92679701/1ad8c136-cdf8-4092-af9e-1aa9dfbb0436)
+
+
 ## Dependencies
 
 Android Architecture Components (ViewModel, LiveData)
