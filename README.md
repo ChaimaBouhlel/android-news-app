@@ -2,18 +2,36 @@
 
 This repository contains the source code for a news app that demonstrates some concepts in Android development, including the use of MVVM architecture, navigation components, Retrofit, Room, and Coroutines. The app fetches current news from the News API and provides features such as breaking news, saved news, search functionality, and more.
 
-## Features
+# App Features
 
-MVVM Architecture: The app follows the MVVM (Model-View-ViewModel) architecture, providing a clean and organized structure for the codebase.
-Navigation Components: Navigation throughout the app is implemented using Android's Navigation Components, offering a robust and intuitive navigation system.
-Coroutines: Kotlin Coroutines are used for handling asynchronous tasks, enhancing the app's responsiveness and performance.
-Retrofit: The app utilizes Retrofit for making API calls to the News API, fetching the latest news data.
-Room Database: Room is integrated to store and retrieve saved articles locally, providing offline access to the user.
-Pagination: The breaking news section features a paginated list, loading more news items as the user scrolls down.
-Search Functionality: Users can search for news articles based on keywords, and the app dynamically loads results from the API.
-Save and Delete Articles: Articles can be saved to the local Room database, and users have the option to delete them, complete with an undo functionality.
-Floating Action Button: A floating action button allows users to save articles to their local database easily.
-Before running the app, We obtained an API key from News API and insert it into the appropriate configuration file.
+- **MVVM Architecture:** The app follows the MVVM (Model-View-ViewModel) architecture, ensuring a clean and organized codebase structure.
+
+- **Navigation Components:** Android's Navigation Components are employed for seamless and intuitive navigation throughout the app.
+
+- **Coroutines:** Kotlin Coroutines are utilized to handle asynchronous tasks, enhancing the app's responsiveness and overall performance.
+
+- **Retrofit:** API calls to the News API are made using Retrofit, fetching the latest news data for display in the app.
+
+- **Room Database:** Room is integrated into the app for storing and retrieving saved articles locally, providing offline access to users.
+
+- **Pagination:** The breaking news section features a paginated list, dynamically loading more news items as the user scrolls down.
+
+- **Search Functionality:** Users can search for news articles based on keywords, and the app dynamically loads results from the News API.
+
+- **Save and Delete Articles:** Articles can be saved to the local Room database, and users have the option to delete them, complete with an undo functionality.
+
+- **Floating Action Button:** A floating action button is provided for users to easily save articles to their local database.
+
+- **Internet Connectivity Handling:** The app includes robust handling for internet connectivity exceptions. If there is no internet connection, a message is displayed to inform the user about the lack of internet access.
+
+# Setup
+
+Before running the app:
+
+1. Obtain an API key from News API.
+2. Insert the obtained API key into the appropriate configuration file.
+
+
 
 ## User Interfaces
 
