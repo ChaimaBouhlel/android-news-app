@@ -61,32 +61,32 @@ This screenshot represents the search tab, represented by the SearchFragment. We
 
 
 ## Architectural skeleton: MVVM (Model-View-ViewModel) pattern
-View Model (UI Package):
+- View Model (UI Package):
 The NewsViewModel is responsible for managing and coordinating data related to news articles.
 It exposes LiveData objects for Breaking News and Search News:
 Two MutableLiveData objects are declared: breakingNews and searchNews, representing the breaking news and search news data, respectively.
 It implements functions for getting breaking news and searching news, handling responses, and managing pagination.
 It also handles internet connectivity checks.
 
-Repository (Repository Package):
+- Repository (Repository Package):
 The NewsRepository class is responsible for fetching data from both the local database and the remote data source (API). It acts as an intermediary between the data sources (API and local database) and the rest of the application, particularly the NewsViewModel.
 
-View Model Provider Factory (UI Package):
+- View Model Provider Factory (UI Package):
 NewsViewModelProviderFactory inherits from ViewModelProvider.Factory. It is a Factory class used to create instances of the NewsViewModel.
 
-Activity Setup:
+- Activity Setup:
 In the News Activity, the NewsRepository and NewsViewModelProviderFactory are instantiated.
 The NewsViewModel is then instantiated using the ViewModelProvider with the provided factory.
 
-Fragment Setup(ui.fragments):
+- Fragment Setup(ui.fragments):
 In each fragment (BreakingNewsFragment, SavedNewsFragment, SearchNewsFragment, and ArticleFragment), the NewsViewModel is instantiated in the onViewCreated method. The fragments use the ViewModelProvider and cast the activity to access the shared NewsViewModel.
 
-Resource Class (util Package):
+- Resource Class (util Package):
 This is a sealed class that we used to wrap network responses. It has three subclasses: Success (with data), Error (with an error message), and Loading (indicating a loading state). This class helps us differentiate between successful and error responses and handle loading states.
 
 ### Design Decisions
 
-MVVM Architecture: MVVM allows for the separation of concerns, making the codebase more modular and maintainable.
+- MVVM Architecture: MVVM allows for the separation of concerns, making the codebase more modular and maintainable.
 LiveData and ViewModel: LiveData ensures that UI components are always up-to-date, and ViewModel survives configuration changes.
 Resource Class: The Resource class simplifies handling different states of a network request, making UI logic cleaner.
 Repository Pattern: Centralized data access through the repository, promoting a clean architecture.
@@ -97,11 +97,11 @@ Repository Pattern: Centralized data access through the repository, promoting a 
 
 ## Dependencies
 
-Android Architecture Components (ViewModel, LiveData)
-Room Database
-Coroutine Extensions for Room
-Kotlin Coroutines
-Retrofit (to make the API calls)
-OkHttp Logging Interceptor (to debug our API requests )
-Navigation Component
-Glide (to load the images from the API)
+- Android Architecture Components (ViewModel, LiveData)
+- Room Database
+- Coroutine Extensions for Room
+- Kotlin Coroutines
+- Retrofit (to make the API calls)
+- OkHttp Logging Interceptor (to debug our API requests )
+- Navigation Component
+- Glide (to load the images from the API)
