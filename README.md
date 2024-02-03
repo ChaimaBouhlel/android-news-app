@@ -59,6 +59,9 @@ This screenshot represents the search tab, represented by the SearchFragment. We
 ![image](https://github.com/ChaimaBouhlel/android-news-app/assets/75532032/59890f25-4fc2-42ab-8bbd-85874c714a96)
 ![image](https://github.com/ChaimaBouhlel/android-news-app/assets/75532032/3fee2deb-8587-40dd-92be-a56e37dd5680)
 
+### Internet Exception 
+![image](https://github.com/ChaimaBouhlel/android-news-app/assets/92679701/1ad8c136-cdf8-4092-af9e-1aa9dfbb0436)
+
 
 ## Architectural skeleton: MVVM (Model-View-ViewModel) pattern
 - View Model (UI Package):
@@ -91,8 +94,6 @@ LiveData and ViewModel: LiveData ensures that UI components are always up-to-dat
 Resource Class: The Resource class simplifies handling different states of a network request, making UI logic cleaner.
 Repository Pattern: Centralized data access through the repository, promoting a clean architecture.
 
-### Internet Exception 
-![image](https://github.com/ChaimaBouhlel/android-news-app/assets/92679701/1ad8c136-cdf8-4092-af9e-1aa9dfbb0436)
 
 
 ## Dependencies
